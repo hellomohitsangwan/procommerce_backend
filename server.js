@@ -1,6 +1,6 @@
 import path from "path";
 import express from "express";
-import scrapeRoutes from "./routes/scrapeRoutes.js";
+import scrapeRoutes from "./routes/scrapeRoutes";
 import userRoutes from "./routes/userRoutes.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
