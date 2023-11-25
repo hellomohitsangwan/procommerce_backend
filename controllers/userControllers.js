@@ -5,7 +5,7 @@ const generateToken = require("../utils/generateToken.js");
 // @desc  Auth. user
 // @route POST /api/users/auth
 // @access Public
-export const authUser = asyncHandler(async (req, res) => {
+exports.authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
   const user = await User.findOne({ email });
@@ -27,7 +27,7 @@ export const authUser = asyncHandler(async (req, res) => {
 // @desc  Register user
 // @route POST /api/users
 // @access Public
-export const registerUser = asyncHandler(async (req, res) => {
+exports.registerUser = asyncHandler(async (req, res) => {
   const { name, email, password, isAdmin } = req.body;
   const userExists = await User.findOne({ email });
 
@@ -55,12 +55,10 @@ export const registerUser = asyncHandler(async (req, res) => {
   }
 });
 
-
-
 // @desc  GET user by id
 // @route GET /api/users/:id
 // @access Private/Admin
-export const getUserById = asyncHandler(async (req, res) => {
+exports.getUserById = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id).select("-password");
   if (user) {
     res.json(user);
@@ -73,7 +71,7 @@ export const getUserById = asyncHandler(async (req, res) => {
 // @desc  update  user profile
 // @route PUT /api/users/:id
 // @access Private admin
-export const updateUser = asyncHandler(async (req, res) => {
+exports.updateUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id);
 
   if (user) {

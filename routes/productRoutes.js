@@ -30,4 +30,4 @@ router
   .delete(protect, adminMiddleware, deleteProduct)
   .put(protect, adminMiddleware, updateProduct);
 
-export default router;
+  module.exports = router;

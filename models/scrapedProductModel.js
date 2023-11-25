@@ -10,6 +10,6 @@ const scrapedProductSchema = new mongoose.Schema({
     website: String,
 });
 
-const ScrapedProduct = mongoose.model('scrapedProductSchema', scrapedProductSchema);
+module.exports = mongoose.model('scrapedProductSchema', scrapedProductSchema);
 
-export default ScrapedProduct;
+

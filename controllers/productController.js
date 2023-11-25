@@ -47,7 +47,7 @@ const getProductsOfAdmin = asyncHandler(async (req, res) => {
 // @desc  Fetch all reviews for particular Admin's product
 // @route Get /api/products/myreviews
 // @access Private and only Admin
-export const getReviewOfAdmin = asyncHandler(async (req, res) => {
+const getReviewOfAdmin = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.body.id);
   if (product) {
     res.json(product.reviews);
@@ -75,26 +75,6 @@ const deleteProduct = asyncHandler(async (req, res) => {
 // @route PUT /api/products/:id
 // @access Admin protected
 const updateProduct = asyncHandler(async (req, res) => {
-  // const { name, price, description, image, brand, category, countInStock } =
-  //   req.body;
-  // // res.json(req.body);
-  // const product = await Product.findById(req.params.id);
-
-  // if (product) {
-  //   product.name = name;
-  //   product.price = price;
-  //   product.description = description;
-  //   product.category = category;
-  //   product.countInStock = countInStock;
-  //   product.image = image;
-  //   product.brand = brand;
-
-  //   const updatedProduct = product.save();
-  //   res.status(201).json(product);
-  // } else {
-  //   res.status(404);
-  //   throw new Error("product not found");
-
   let product = await Product.findById(req.params.id);
 
   if (!product) {
@@ -109,7 +89,6 @@ const updateProduct = asyncHandler(async (req, res) => {
   }
 
   if (images !== undefined) {
-    // Deleting images associated with the product
     for (let i = 0; i < product.images.length; i++) {
       const result = await cloudinary.v2.uploader.destroy(
         product.images[i].public_id
@@ -180,19 +159,20 @@ const createProduct = asyncHandler(async (req, res, next) => {
   });
 });
 
-export {
+module.exports = {
   getProducts,
   getProductById,
   deleteProduct,
   updateProduct,
   createProduct,
   getProductsOfAdmin,
+  getReviewOfAdmin,
 };
 
 // @desc    Create new review
 // @route   POST /api/products/:id/reviews
 // @access  Private
-export const createProductReview = asyncHandler(async (req, res) => {
+const createProductReview = asyncHandler(async (req, res) => {
   const { rating, comment } = req.body;
 
   const product = await Product.findById(req.params.id);
@@ -204,7 +184,7 @@ export const createProductReview = asyncHandler(async (req, res) => {
 
     if (alreadyReviewed) {
       res.status(400);
-      throw new Error("You've already posted review for this product");
+      throw new Error("You've already posted a review for this product");
     }
 
     const review = {
@@ -230,10 +210,15 @@ export const createProductReview = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Get top rated products
+// @desc    Get top-rated products
 // @route   GET /api/products/top
 // @access  Public
-export const getTopProducts = asyncHandler(async (req, res) => {
+const getTopProducts = asyncHandler(async (req, res) => {
   const products = await Product.find({}).sort({ rating: -1 }).limit(3);
   res.json(products);
 });
+
+module.exports = {
+  createProductReview,
+  getTopProducts,
+};

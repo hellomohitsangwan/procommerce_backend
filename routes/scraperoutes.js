@@ -5,4 +5,4 @@ const { scrapeWeb } = require('../controllers/scrapeController.js');
 
 router.route("/").post(scrapeWeb)
 
-export default router;
+module.exports = router;

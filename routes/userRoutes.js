@@ -17,4 +17,4 @@ router
   .get(protect, adminMiddleware, getUserById)
   .put(protect, adminMiddleware, updateUser);
 
-export default router;
+  module.exports = router;
