@@ -1,5 +1,5 @@
+const mongoose = require('mongoose');
 
-import mongoose from "mongoose";
 
 const scrapedProductSchema = new mongoose.Schema({
     name: String,

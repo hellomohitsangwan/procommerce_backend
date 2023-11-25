@@ -1,8 +1,7 @@
-import express from "express";
+const express = require('express');
 const router = express.Router();
-import {
-    scrapeWeb
-} from "../controllers/scrapeController.js";
+const { scrapeWeb } = require('../controllers/scrapeController.js');
+
 
 router.route("/").post(scrapeWeb)
 

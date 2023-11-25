@@ -1,5 +1,5 @@
-import express from "express";
-import {
+const express = require('express');
+const {
   getProductById,
   getProducts,
   deleteProduct,
@@ -9,8 +9,9 @@ import {
   createProductReview,
   getTopProducts,
   getReviewOfAdmin,
-} from "../controllers/productController.js";
-import { adminMiddleware, protect } from "../middleware/authMiddleware.js";
+} = require('../controllers/productController.js');
+const { adminMiddleware, protect } = require('../middleware/authMiddleware.js');
+
 const router = express.Router();
 
 //same meaning
