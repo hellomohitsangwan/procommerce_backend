@@ -1,6 +1,6 @@
 const path = require("path");
 const express = require("express");
-const scrapeRoutes = require("./routes/scrapeRoutes.js");
+const scrapeRoutes = require("./routes/scraperoutes.js");
 const userRoutes = require("./routes/userRoutes.js");
 const uploadRoutes = require("./routes/uploadRoutes.js");
 const productRoutes = require("./routes/productRoutes.js");
