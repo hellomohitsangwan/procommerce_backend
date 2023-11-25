@@ -9,28 +9,33 @@ const cloudinary = require("cloudinary");
 const morgan = require("morgan");
 const fileUpload = require("express-fileupload");
 const connectDB = require("./config/db.js");
+const corsMiddleware = require("./cors/index.js");
 
 const app = express();
+const PORT = process.env.PORT || 8000; // Use environment variable or default to 8000
+
 app.use(express.json());
 app.use(morgan('dev'));
 app.use(fileUpload());
+app.use(corsMiddleware);
+
 cloudinary.config({
   cloud_name: "djfh8ecu4",
   api_key: "329259279517943",
   api_secret: "SZ9Bp_Tln70t0lCJGv54PrX-lP0",
 });
-connectDB();
-
-// const __dirname = path.resolve();
 
 connectDB();
+
+// Serve static files from the "uploads" directory
+app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
+
+// Define your routes after setting up middleware and configurations
 app.use("/api/scrape", scrapeRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/upload", uploadRoutes);
-app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
-const PORT = 8000;
 app.listen(PORT, () => {
-  console.log(`server started in production mode on port 8000`);
+  console.log(`Server started in production mode on port ${PORT}`);
 });
