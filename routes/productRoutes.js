@@ -10,7 +10,7 @@ const {
   getTopProducts,
   getReviewOfAdmin,
 } = require('../controllers/productController.js');
-const { adminMiddleware, protect } = require('../middleware/authMiddleware.js');
+const { adminMiddleware, protect } = require('../middleware/authmiddleware.js');
 
 const router = express.Router();
 
