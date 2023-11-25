@@ -159,15 +159,15 @@ const createProduct = asyncHandler(async (req, res, next) => {
   });
 });
 
-module.exports = {
-  getProducts,
-  getProductById,
-  deleteProduct,
-  updateProduct,
-  createProduct,
-  getProductsOfAdmin,
-  getReviewOfAdmin,
-};
+// module.exports = {
+//   getProducts,
+//   getProductById,
+//   deleteProduct,
+//   updateProduct,
+//   createProduct,
+//   getProductsOfAdmin,
+//   getReviewOfAdmin,
+// };
 
 // @desc    Create new review
 // @route   POST /api/products/:id/reviews
@@ -218,7 +218,21 @@ const getTopProducts = asyncHandler(async (req, res) => {
   res.json(products);
 });
 
+// module.exports = {
+//   createProductReview,
+//   getTopProducts,
+// };
+
+
+
 module.exports = {
+  getProducts,
+  getProductById,
+  deleteProduct,
+  updateProduct,
+  createProduct,
+  getProductsOfAdmin,
+  getReviewOfAdmin,
   createProductReview,
   getTopProducts,
 };

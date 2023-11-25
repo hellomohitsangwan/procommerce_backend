@@ -2,13 +2,15 @@ const express = require('express');
 const router = express.Router();
 
 
-import {
+const {
   authUser,
   registerUser,
   getUserById,
   updateUser,
-} from "../controllers/userControllers.js";
-import { adminMiddleware, protect } from "../middleware/authMiddleware.js";
+} = require('../controllers/userControllers.js');
+
+const { adminMiddleware, protect } = require('../middleware/authMiddleware.js');
+
 
 router.route("/").post(registerUser)
 router.post("/login", authUser);
