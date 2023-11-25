@@ -9,7 +9,7 @@ const {
   updateUser,
 } = require('../controllers/userControllers.js');
 
-const { adminMiddleware, protect } = require('../middleware/authMiddleware.js');
+const { adminMiddleware, protect } = require('../middleware/authmiddleware.js');
 
 
 router.route("/").post(registerUser)
