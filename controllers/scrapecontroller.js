@@ -1,12 +1,11 @@
-import asyncHandler from "express-async-handler";
-import {
-  scrapeAmazon,
-  scrapeFlipkart,
-  scrapeNykaa,
-  scrapeShopclues,
-  scrapeSnapdeal,
-} from "../utils/scrapper.js";
-import ScrapedProduct from "../models/scrapedProductModel.js";
+const asyncHandler = require("express-async-handler");
+const scrapperUtils = require("../utils/scrapper.js");
+const scrapeAmazon = scrapperUtils.scrapeAmazon;
+const scrapeFlipkart = scrapperUtils.scrapeFlipkart;
+const scrapeNykaa = scrapperUtils.scrapeNykaa;
+const scrapeShopclues = scrapperUtils.scrapeShopclues;
+const scrapeSnapdeal = scrapperUtils.scrapeSnapdeal;
+const ScrapedProduct = require("../models/scrapedProductModel.js");
 
 
 export const scrapeWeb = asyncHandler(async (req, res) => {

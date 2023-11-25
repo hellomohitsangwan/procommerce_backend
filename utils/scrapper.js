@@ -1,4 +1,4 @@
-import * as cheerio from "cheerio";
+const cheerio = require("cheerio");
 
 const parsePrice = (price) => {
     const numericPrice = parseInt(String(price).replace(/[^\d]/g, ""), 10);
