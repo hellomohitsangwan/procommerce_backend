@@ -1,7 +1,7 @@
-import asyncHandler from "express-async-handler";
-import Product from "../models/productModel.js";
-import User from "../models/userModel.js";
-import cloudinary from "cloudinary";
+const asyncHandler = require("express-async-handler");
+const Product = require("../models/productModel.js");
+const User = require("../models/userModel.js");
+const cloudinary = require("cloudinary");
 
 // @desc  Fetch all products
 // @route Get /api/products
