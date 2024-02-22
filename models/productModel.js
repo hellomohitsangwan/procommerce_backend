@@ -69,7 +69,7 @@ const productSchema = mongoose.Schema(
     },
     price: {
       type: Number,
-      required: true,
+      // required: true,
       default: 0,
     },
     countInStock: {
@@ -77,6 +77,19 @@ const productSchema = mongoose.Schema(
       required: true,
       default: 0,
     },
+    accuracy: {
+      type: Number,
+      default: 0,
+    },
+    trainingData: {
+      type: String,
+    },
+    version: {
+      type: String,
+    },
+    framework: {
+      type: String,
+    }
   },
   {
     timestamps: true,
